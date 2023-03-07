@@ -5,19 +5,18 @@ import {
 import "./App.css";
 
 function App() {
-  const inputRef = useRef(null);
-  const resultRef = useRef(null);
   const [result, setResult] = useState(0);
   const [userInput, setuserInput] = useState(0);
-
-  function addition(e) {
-    e.preventDefault();
-    setResult((result) => result + Number(inputRef.current.value));
-  };
 
   function inputChangeHandler(e) {
     setuserInput(e.target.value);
   }
+
+  function addition(e) {
+    e.preventDefault();
+    let sum = Number(result) + Number(userInput);
+    setResult(sum);
+  };
 
   function subtraction(e) {
   };
@@ -43,7 +42,6 @@ function App() {
         <p>{result}</p>
         <input
           pattern="[0-9]"
-          ref={inputRef}
           type="number"
           min={0}
           placeholder="Type a number"
