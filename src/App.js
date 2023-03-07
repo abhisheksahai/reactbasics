@@ -1,7 +1,4 @@
-import {
-  useState,
-  useRef
-} from "react";
+import { useState } from "react";
 import "./App.css";
 
 function App() {
@@ -9,28 +6,37 @@ function App() {
   const [userInput, setuserInput] = useState(0);
 
   function inputChangeHandler(e) {
-    setuserInput(e.target.value);
+    setuserInput(Number(e.target.value));
   }
 
   function addition(e) {
     e.preventDefault();
-    let sum = Number(result) + Number(userInput);
-    setResult(sum);
+    setResult(result + userInput);
   };
 
   function subtraction(e) {
+    e.preventDefault();
+    setResult(result - userInput);
   };
 
   function multiplication(e) {
+    e.preventDefault();
+    setResult(result * userInput);
   };
 
   function division(e) {
+    e.preventDefault();
+    if (userInput !== 0) {
+      setResult(result / userInput);
+    }
   };
 
-  function resetInput(e) {
+  function resetInput() {
+    setuserInput(0);
   };
 
-  function resetResult(e) {
+  function resetResult() {
+    setResult(0);
   };
 
   return (
